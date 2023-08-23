@@ -8,6 +8,14 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 
+<style>
+    @media print {
+        .no-print {
+            display: none !important;
+        }
+    }
+</style>
+
 <body>
 
     <div class="container">
@@ -148,8 +156,9 @@
                     <label for="tempoApresentacao">Tempo de Apresentação:</label>
                     <input type="text" class="form-control" id="tempoApresentacao" name="tempoApresentacao" required>
                 </div>
-                <button type="button" class="btn btn-secondary" id="printButton">Imprimir</button>
-                <button type="submit" class="btn btn-primary">Enviar</button>
+
+                <button type="button" class="btn btn-primary no-print" id="printButton">Imprimir</button>
+                <button type="button" class="btn btn-success no-print" id="saveJSONButton">Enviar Inscrição</button>
             </form>
         </div>
 
@@ -172,9 +181,28 @@
                 cell2.innerHTML = '<input type="number" class="form-control" name="equipe_idade[]" required>';
             });
 
-              document.getElementById("printButton").addEventListener("click", function() {
-    window.print();
-  });
+            document.getElementById("saveJSONButton").addEventListener("click", function () {
+                const formData = {
+                    espetaculo: document.getElementById("espetaculo").value,
+                    autor: document.getElementById("autor").value,
+                    direcao: document.getElementById("direcao").value,
+                    // Adicione mais campos do formulário aqui
+                };
+
+                const jsonData = JSON.stringify(formData, null, 2);
+
+                const blob = new Blob([jsonData], { type: "application/json" });
+                const url = URL.createObjectURL(blob);
+
+                const a = document.createElement("a");
+                a.href = url;
+                a.download = "dados_formulario.json";
+                a.click();
+            });
+
+            document.getElementById("printButton").addEventListener("click", function () {
+                window.print();
+            });
 
         </script>
 </body>
