@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Espetáculo</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="text-center">
+          <img src="C:\Users\gletj\OneDrive\Área de Trabalho\Trabalhos\9º FEstival\logo.png" alt="Imagem" width="640">
+          <h1>Ficha de Inscrição</h1>
+        </div>
+        
+
+
+    <div class="container">
+        <form id="myForm">
+            <!-- Dados do Espetáculo -->
+            <h2>Dados do Espetáculo</h2>
+            <div class="form-group">
+                <label for="espetaculo">Espetáculo:</label>
+                <input type="text" class="form-control" id="espetaculo" name="espetaculo" required>
+            </div>
+
+            <!-- ... (outros campos de Dados do Espetáculo) ... -->
+
+            <!-- Elenco / Atores -->
+            <h3>Elenco / Atores</h3>
+            <table class="table" id="elencoTable">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Idade</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="text" class="form-control" name="elenco_nome[]" required></td>
+                        <td><input type="number" class="form-control" name="elenco_idade[]" required></td>
+                    </tr>
+                </tbody>
+            </table>
+            <button type="button" class="btn btn-secondary" id="addElencoRow">Adicionar Ator</button>
+
+            <!-- Equipe Técnica -->
+            <h3>Equipe Técnica</h3>
+            <table class="table" id="equipeTable">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Idade</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="text" class="form-control" name="equipe_nome[]" required></td>
+                        <td><input type="number" class="form-control" name="equipe_idade[]" required></td>
+                    </tr>
+                </tbody>
+            </table>
+            <button type="button" class="btn btn-secondary" id="addEquipeRow">Adicionar Membro</button>
+
+            <!-- Dados do Grupo -->
+            <h2 class="mt-4">Dados do Grupo</h2>
+            <div class="form-group">
+                <label for="nomeGrupo">Nome do Grupo:</label>
+                <input type="text" class="form-control" id="nomeGrupo" name="nomeGrupo" required>
+            </div>
+
+            <div class="form-group">
+                <label for="endereco">Endereço:</label>
+                <input type="text" class="form-control" id="endereco" name="endereco" required>
+            </div>
+
+            <div class="form-group">
+                <label for="cidadeEstado">Cidade e Estado:</label>
+                <input type="text" class="form-control" id="cidadeEstado" name="cidadeEstado" required>
+            </div>
+
+            <div class="form-group">
+                <label for="telefones">Telefones:</label>
+                <input type="text" class="form-control" id="telefones" name="telefones" required>
+            </div>
+
+            <div class="form-group">
+                <label for="emailGrupo">E-mail:</label>
+                <input type="email" class="form-control" id="emailGrupo" name="emailGrupo" required>
+            </div>
+
+            <div class="form-group">
+                <label for="cnpj">CNPJ:</label>
+                <input type="text" class="form-control" id="cnpj" name="cnpj" required>
+            </div>
+
+            <div class="form-group">
+                <label for="nomeResponsavel">Nome do Responsável:</label>
+                <input type="text" class="form-control" id="nomeResponsavel" name="nomeResponsavel" required>
+            </div>
+
+            <div class="form-group">
+                <label for="qualificacaoResponsavel">Qualificação Completa do Responsável:</label>
+                <textarea class="form-control" id="qualificacaoResponsavel" name="qualificacaoResponsavel" rows="6"
+                    required></textarea>
+            </div>
+
+            <!-- Informações sobre o Espetáculo -->
+            <h2 class="mt-4">Informações sobre o Espetáculo</h2>
+            <div class="form-group">
+                <label for="sinopse">Sinopse:</label>
+                <textarea class="form-control" id="sinopse" name="sinopse" rows="6" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="cenografia">Informações sobre a Cenografia:</label>
+                <textarea class="form-control" id="cenografia" name="cenografia" rows="6" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="figurinos">Informações sobre os Figurinos:</label>
+                <textarea class="form-control" id="figurinos" name="figurinos" rows="6" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="iluminacao">Informações sobre a Iluminação:</label>
+                <textarea class="form-control" id="iluminacao" name="iluminacao" rows="6" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="outrasInformacoes">Outras Informações:</label>
+                <textarea class="form-control" id="outrasInformacoes" name="outrasInformacoes" rows="6"
+                    required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="tempoApresentacao">Tempo de Apresentação:</label>
+                <input type="text" class="form-control" id="tempoApresentacao" name="tempoApresentacao" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("addElencoRow").addEventListener("click", function () {
+            const elencoTable = document.getElementById("elencoTable").getElementsByTagName('tbody')[0];
+            const newRow = elencoTable.insertRow(-1);
+            const cell1 = newRow.insertCell(0);
+            const cell2 = newRow.insertCell(1);
+            cell1.innerHTML = '<input type="text" class="form-control" name="elenco_nome[]" required>';
+            cell2.innerHTML = '<input type="number" class="form-control" name="elenco_idade[]" required>';
+        });
+
+        document.getElementById("addEquipeRow").addEventListener("click", function () {
+            const equipeTable = document.getElementById("equipeTable").getElementsByTagName('tbody')[0];
+            const newRow = equipeTable.insertRow(-1);
+            const cell1 = newRow.insertCell(0);
+            const cell2 = newRow.insertCell(1);
+            cell1.innerHTML = '<input type="text" class="form-control" name="equipe_nome[]" required>';
+            cell2.innerHTML = '<input type="number" class="form-control" name="equipe_idade[]" required>';
+        });
+    </script>
+</body>
+
+</html>
