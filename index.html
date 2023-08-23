@@ -148,7 +148,7 @@
                     <label for="tempoApresentacao">Tempo de Apresentação:</label>
                     <input type="text" class="form-control" id="tempoApresentacao" name="tempoApresentacao" required>
                 </div>
-
+                <button type="button" class="btn btn-secondary" id="printButton">Imprimir</button>
                 <button type="submit" class="btn btn-primary">Enviar</button>
             </form>
         </div>
@@ -171,6 +171,11 @@
                 cell1.innerHTML = '<input type="text" class="form-control" name="equipe_nome[]" required>';
                 cell2.innerHTML = '<input type="number" class="form-control" name="equipe_idade[]" required>';
             });
+
+              document.getElementById("printButton").addEventListener("click", function() {
+    window.print();
+  });
+
         </script>
 </body>
 
